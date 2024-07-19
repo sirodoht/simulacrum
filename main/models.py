@@ -15,17 +15,14 @@ class Persona(models.Model):
     prompt = models.TextField()
 
 
-class Policy(models.Model):
+class Simulation(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
-    text = models.TextField()
-
-    class Meta:
-        verbose_name_plural = "Policies"
+    policy = models.TextField()
 
 
 class Reaction(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
-    policy = models.ForeignKey(Policy, on_delete=models.CASCADE)
+    simulation = models.ForeignKey(Simulation, on_delete=models.CASCADE)
     persona = models.ForeignKey(Persona, on_delete=models.CASCADE)
     prompt = models.TextField()
     text = models.TextField()

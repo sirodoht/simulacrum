@@ -29,16 +29,16 @@ class PersonaAdmin(admin.ModelAdmin):
     ordering = ["-id"]
 
 
-@admin.register(models.Policy)
-class PolicyAdmin(admin.ModelAdmin):
+@admin.register(models.Simulation)
+class SimulationAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "created_at",
-        "text",
+        "policy",
     )
     search_fields = (
         "id",
-        "text",
+        "policy",
     )
     ordering = ["-id"]
 
@@ -47,7 +47,7 @@ class PolicyAdmin(admin.ModelAdmin):
 class ReactionAdmin(admin.ModelAdmin):
     list_display = (
         "id",
-        "policy",
+        "simulation",
         "persona",
         "prompt",
     )

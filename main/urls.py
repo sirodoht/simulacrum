@@ -4,5 +4,5 @@ from main import views
 
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", views.SimulationCreate.as_view(), name="index"),
 ]

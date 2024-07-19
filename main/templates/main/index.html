@@ -5,8 +5,11 @@
     <h1>Policy Reaction Simulator</h1>
 
     <form method="post">
-        <label>Enter policy</label>
-        <textarea></textarea>
+        <p>
+            <label>Enter policy:</label>
+            <textarea cols="50" rows="5" name="policy"></textarea>
+        </p>
+        {% csrf_token %}
         <input type="submit" value="Submit">
     </form>
 </main>
