@@ -1,0 +1,20 @@
+# python
+*.pyc
+
+# database
+db.sqlite3
+
+# environment
+.envrc
+.venv/
+
+# generated static
+/static/
+
+# testing
+.coverage
+htmlcov/
+
+# docker
+docker-postgres-data/
+docker-compose.override.yml
