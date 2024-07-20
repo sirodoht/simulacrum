@@ -6,7 +6,7 @@
 
     <p>
         Enter a policy below, then click Submit. This will run a simulation of how the
-        personas below would react to such a policy.
+        personas below would react to the policy entered.
     </p>
     <p>
         The generation uses the OpenAI API.
@@ -15,7 +15,7 @@
     <form method="post">
         <p>
             <label>Policy:</label>
-            <textarea cols="50" rows="5" name="policy"></textarea>
+            <textarea cols="50" rows="5" name="policy">Increase funding for public schools by 10%</textarea>
         </p>
         {% csrf_token %}
         <input type="submit" value="Submit">
