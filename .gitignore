@@ -16,5 +16,4 @@ db.sqlite3
 htmlcov/
 
 # docker
-docker-postgres-data/
 docker-compose.override.yml

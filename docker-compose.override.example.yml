@@ -1,0 +1,6 @@
+services:
+  web:
+    environment:
+      DEBUG: 1
+      SECRET_KEY: xxx
+      OPENAI_API_KEY: xxx

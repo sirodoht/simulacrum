@@ -1,0 +1,16 @@
+services:
+  web:
+    command: >
+      bash -c "./manage.py migrate;
+               ./manage.py collectstatic --noinput;
+               ./manage.py runserver 0.0.0.0:8000"
+    build: .
+    image: simulacrum
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      DEBUG: 1
+      SECRET_KEY: xxx
+      OPENAI_API_KEY: xxx
