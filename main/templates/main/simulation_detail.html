@@ -2,7 +2,7 @@
 
 {% block content %}
 <nav>
-    <a href="{% url 'simulation_create' %}">New Simulation</a>
+    <a href="{% url 'simulation_create' %}">Home</a>
 </nav>
 
 <main>
@@ -13,9 +13,27 @@
         Generated at {{ simulation.created_at }}
     </p>
 
+    <div style="margin-bottom: 8px;">
+        {% if not simulation.reaction_set.first.sentiment %}
+        [
+        <form action="{% url 'sentiment_create' simulation.id %}" method="post" class="inline">
+            {% csrf_token %}
+            <input type="submit" value="Sentiment Analysis">
+        </form>
+        ]
+        {% endif %}
+    </div>
+
     <div style="max-width: 800px;">
     {% for reaction in simulation.reaction_set.all %}
         <div class="reaction">
+            {% if reaction.sentiment %}
+            <div class="sentiment">
+                <div class="sentiment-item sentiment-{{ reaction.sentiment }}">
+                    {{ reaction.sentiment }}
+                </div>
+            </div>
+            {% endif %}
             <blockquote>
                 <p>
                     {{ reaction.text }}

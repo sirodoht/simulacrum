@@ -1,4 +1,6 @@
+from django.views.decorators.http import require_POST
 from django.urls import reverse
+from django.shortcuts import redirect
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView
 
@@ -27,3 +29,10 @@ class SimulationCreate(CreateView):
 
 class SimulationDetail(DetailView):
     model = models.Simulation
+
+
+@require_POST
+def sentiment_create(request, simulation_id):
+    simulation = models.Simulation.objects.get(id=simulation_id)
+    llm.generate_sentiment(simulation)
+    return redirect("simulation_detail", simulation_id)

@@ -86,3 +86,56 @@ def create_reactions(simulation, policy):
             for result in result_list
         ]
     )
+
+
+def process_sentiment(client, reaction):
+    try:
+        system_prompt = """
+You are a sentiment analysis assitant. For every statement given, please
+reply with one 'positive', 'neutral', or 'negative'. Always reply all
+lowercase, no full stops, or other punctuation marks.
+        """.replace("\n", " ")
+        user_prompt = f"Statement: {reaction.text}"
+        completion = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+        )
+        logger.info(f"OpenAI API Request: {completion}")
+        sentiment = completion.choices[0].message.content
+        return {
+            "reaction_id": reaction.id,
+            "sentiment": sentiment,
+        }
+    except Exception as ex:
+        logger.error(f"Error processing sentiment for reaction {reaction.id}: {ex}")
+
+
+def generate_sentiment(simulation):
+    client = OpenAI(api_key=settings.OPENAI_API_KEY)
+
+    reaction_list = simulation.reaction_set.all()
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        process_sentiment_with_context = partial(process_sentiment, client)
+        future_list = [
+            executor.submit(process_sentiment_with_context, reaction)
+            for reaction in reaction_list
+        ]
+
+        result_list = []
+        for future in as_completed(future_list):
+            try:
+                result = future.result()
+                if result:
+                    result_list.append(result)
+            except Exception as ex:
+                logger.error(f"Thread raised an exception: {ex}")
+
+    updated_reactions = []
+    for result in result_list:
+        reaction = models.Reaction.objects.get(id=result["reaction_id"])
+        reaction.sentiment = result["sentiment"]
+        updated_reactions.append(reaction)
+    models.Reaction.objects.bulk_update(updated_reactions, ["sentiment"])

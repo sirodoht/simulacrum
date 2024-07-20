@@ -10,4 +10,9 @@ urlpatterns = [
         views.SimulationDetail.as_view(),
         name="simulation_detail",
     ),
+    path(
+        "sentiments/<int:simulation_id>/create/",
+        views.sentiment_create,
+        name="sentiment_create",
+    ),
 ]

@@ -33,6 +33,7 @@ class Reaction(models.Model):
     system_prompt = models.TextField()
     user_prompt = models.TextField()
     text = models.TextField()
+    sentiment = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return f"{self.id}: {self.text[:50]}..."

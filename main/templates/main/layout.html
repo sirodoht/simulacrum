@@ -9,14 +9,28 @@
             main { max-width: 600px; margin: auto; padding: 0 16px; }
             label { display: block; }
             nav { max-width: 600px; margin: auto; padding-top: 16px; }
-            nav a { color: blue; text-decoration: none; display: block; }
+            nav a { color: blue; text-decoration: none; }
             nav a:hover, .nav:hover { text-decoration: underline; }
+
+            form.inline { display: inline-block; }
+            form.inline input[type=submit] {
+                border: none;
+                background: unset;
+                padding: 0;
+                color: blue;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            form.inline input[type=submit]:hover { text-decoration: underline; }
+
             small a { color: blue; text-decoration: none;}
             small a:hover { text-decoration: underline; }
             blockquote { margin: 0; }
+
             @media (max-width: 420px) {
                 textarea { max-width: 100%; }
             }
+
             .persona {
                 border: 1px solid grey;
                 max-width: 500px;
@@ -28,6 +42,12 @@
                 padding: 0 16px;
                 margin-bottom: 16px;
             }
+
+            .sentiment { padding-top: 16px; }
+            .sentiment-item { display: inline-block; padding: 0 4px; border: 1px solid black; }
+            .sentiment-positive { color: green; border-color: green; }
+            .sentiment-neutral { color: grey; border-color: grey; }
+            .sentiment-negative { color: red; border-color: red; }
         </style>
     </head>
     <body>
