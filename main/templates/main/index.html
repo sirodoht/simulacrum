@@ -4,6 +4,14 @@
 <main>
     <h1>Policy Reaction Simulator</h1>
 
+    <p>
+        Enter a policy below, then click Submit. This will run a simulation of how the
+        personas below would react to such a policy.
+    </p>
+    <p>
+        The generation uses the OpenAI API.
+    </p>
+
     <form method="post">
         <p>
             <label>Policy:</label>
@@ -12,5 +20,39 @@
         {% csrf_token %}
         <input type="submit" value="Submit">
     </form>
+
+    <h2>
+        Personas
+        <small>
+            [<a href="{% url 'admin:main_persona_changelist' %}">edit</a>
+            | <a href="{% url 'admin:main_persona_add' %}">new</a>]
+        </small>
+    </h2>
+    <div>
+        {% for persona in persona_list %}
+        <div class="persona">
+            {{ persona.text }}
+        </div>
+        {% empty %}
+        <div>
+            <em>(empty</em>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h2>Past Simulations</h2>
+    <ul>
+        {% for simulation in simulation_list %}
+        <li>
+            ({{ simulation.id }})
+            {{ simulation.created_at }}:
+            <a href="{% url 'simulation_detail' simulation.id %}">{{ simulation.policy }}</a>
+        </li>
+        {% empty %}
+        <div>
+            <em>(empty</em>
+        </div>
+        {% endfor %}
+    </ul>
 </main>
 {% endblock %}
