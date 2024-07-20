@@ -1,0 +1,42 @@
+[
+    {
+        "model": "main.persona",
+        "pk": 1,
+        "fields": {
+            "created_at": "2024-07-19T19:19:20Z",
+            "text": "28-year-old single professional living in a trendy urban area, focused on career advancement and nightlife."
+        }
+    },
+    {
+        "model": "main.persona",
+        "pk": 2,
+        "fields": {
+            "created_at": "2024-07-19T19:20:06Z",
+            "text": "22-year-old university student in a bustling city center, passionate about climate change and affordable housing"
+        }
+    },
+    {
+        "model": "main.persona",
+        "pk": 3,
+        "fields": {
+            "created_at": "2024-07-19T19:20:10Z",
+            "text": "60-year-old retiree living in a quiet suburban area, focused on healthcare and public transportation"
+        }
+    },
+    {
+        "model": "main.persona",
+        "pk": 4,
+        "fields": {
+            "created_at": "2024-07-19T19:20:14Z",
+            "text": "38-year-old immigrant working in the hospitality industry, living in a multicultural neighborhood, concerned about job security and immigration policies"
+        }
+    },
+    {
+        "model": "main.persona",
+        "pk": 5,
+        "fields": {
+            "created_at": "2024-07-19T19:20:23Z",
+            "text": "33-year-old single parent in a social housing complex, focused on child welfare and social support systems"
+        }
+    }
+]
