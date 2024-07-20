@@ -1,0 +1,31 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+<nav>
+    <a href="{% url 'simulation_create' %}">New Simulation</a>
+</nav>
+
+<main>
+    <h1>
+        Simulation: {{ simulation.policy }}
+    </h1>
+    <p>
+        Generated at {{ simulation.created_at }}
+    </p>
+
+    <div style="max-width: 800px;">
+    {% for reaction in simulation.reaction_set.all %}
+        <div class="reaction">
+            <blockquote>
+                <p>
+                    {{ reaction.text }}
+                </p>
+            </blockquote>
+            <p style="color: gray;">
+                – {{ reaction.persona.text }}
+            </p>
+        </div>
+    {% endfor %}
+    </div>
+</main>
+{% endblock %}

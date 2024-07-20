@@ -4,5 +4,10 @@ from main import views
 
 
 urlpatterns = [
-    path("", views.SimulationCreate.as_view(), name="index"),
+    path("", views.SimulationCreate.as_view(), name="simulation_create"),
+    path(
+        "simulations/<int:pk>/",
+        views.SimulationDetail.as_view(),
+        name="simulation_detail",
+    ),
 ]
