@@ -35,7 +35,7 @@
         </div>
         {% empty %}
         <div>
-            <em>(empty</em>
+            <em>(empty)</em>
         </div>
         {% endfor %}
     </div>
@@ -49,9 +49,9 @@
             <a href="{% url 'simulation_detail' simulation.id %}">{{ simulation.policy }}</a>
         </li>
         {% empty %}
-        <div>
-            <em>(empty</em>
-        </div>
+        <li>
+            <em>(empty)</em>
+        </li>
         {% endfor %}
     </ul>
 </main>
