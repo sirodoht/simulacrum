@@ -1,0 +1,5 @@
+---
+debug: "{{ lookup('env', 'DEBUG') }}"
+secret_key: "{{ lookup('env', 'SECRET_KEY') }}"
+domain_name: "{{ lookup('env', 'DOMAIN_NAME') }}"
+openai_api_key: "{{ lookup('env', 'OPENAI_API_KEY') }}"

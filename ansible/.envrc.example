@@ -1,0 +1,20 @@
+# inventory.yaml
+
+# Server IP and user with ssh access
+export ANSIBLE_HOST=
+export ANSIBLE_USER=
+
+
+# vars.yaml
+
+# Domain name
+export DOMAIN_NAME=simulacrum.sirodoht.com
+
+# Show exceptions and tracebacks on errors
+export DEBUG=1
+
+# Used by Django to encrypt session login cookies
+export SECRET_KEY=xxx
+
+# OpenAI
+export OPENAI_API_KEY=
