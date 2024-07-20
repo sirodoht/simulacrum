@@ -74,7 +74,17 @@ docker compose run web python manage.py loaddata test-data-file
 python manage.py loaddata test-data-file
 ```
 
-This works for:
+This works for `test-data-file` being:
 
 * `personas`: pre-defined personas, see `main/fixtures/personas.json`
 * `users`: test admin user, see `main/fixtures/users.json`
+
+## Testing
+
+Run testing suite with:
+
+```sh
+docker compose run web python manage.py test
+# or
+python manage.py test
+```
