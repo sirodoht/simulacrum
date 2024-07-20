@@ -20,11 +20,11 @@ class PersonaAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "created_at",
-        "prompt",
+        "text",
     )
     search_fields = (
         "id",
-        "prompt",
+        "text",
     )
     ordering = ["-id"]
 
@@ -47,13 +47,12 @@ class SimulationAdmin(admin.ModelAdmin):
 class ReactionAdmin(admin.ModelAdmin):
     list_display = (
         "id",
+        "text",
         "simulation",
         "persona",
-        "prompt",
     )
     search_fields = (
         "id",
-        "prompt",
         "text",
     )
     ordering = ["-id"]
