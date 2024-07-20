@@ -22,7 +22,7 @@ This new policy is about to be voted for:
 """
 
 USER_PROMPT_TEMPLATE = """
-How do you feel about it?
+How do you think of it? Answer in 1 sentence.
 """
 
 
